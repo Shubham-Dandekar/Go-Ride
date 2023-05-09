@@ -34,10 +34,10 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.updatePassword(uuid, passwordDTO), HttpStatus.OK);
     }
 
-    @PatchMapping("/{uuid}/update/email/{email}")
-    public ResponseEntity<String> updateEmail(@PathVariable("uuid") String uuid, @PathVariable("email") String newEmail) {
-        return new ResponseEntity<>(customerService.updateEmail(uuid, newEmail), HttpStatus.OK);
-    }
+//    @PatchMapping("/{uuid}/update/email/{email}")
+//    public ResponseEntity<String> updateEmail(@PathVariable("uuid") String uuid, @PathVariable("email") String newEmail) {
+//        return new ResponseEntity<>(customerService.updateEmail(uuid, newEmail), HttpStatus.OK);
+//    }
 
     @PatchMapping("/{uuid}/update/address/")
     public ResponseEntity<String> updateAddress(@PathVariable("uuid") String uuid, @RequestParam("city") String city,
