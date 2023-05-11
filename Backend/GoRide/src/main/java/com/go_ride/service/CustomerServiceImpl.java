@@ -1,9 +1,6 @@
 package com.go_ride.service;
 
-import com.go_ride.exception.AdminException;
-import com.go_ride.exception.CredentialsException;
-import com.go_ride.exception.CustomerException;
-import com.go_ride.exception.UserSessionException;
+import com.go_ride.exception.*;
 import com.go_ride.model.*;
 import com.go_ride.repository.CustomerRepository;
 import com.go_ride.repository.UserSessionRepository;
@@ -88,7 +85,7 @@ public class CustomerServiceImpl implements CustomerService{
         customer.setPassword(passwordDTO.getNewPassword());
         customerRepo.save(customer);
 
-        return "Customer password changed successfully and " + logInLogOutService.logOutUser(uuid);
+        return "Customer password changed successfully";
     }
 
     @Override
@@ -96,6 +93,8 @@ public class CustomerServiceImpl implements CustomerService{
         UserSession session = userSessionRepo.findById(uuid).orElseThrow(() -> new UserSessionException("User not logged in."));
 
         Customer customer = customerRepo.findById(session.getEmail()).orElseThrow(() -> new AdminException("User not found."));
+
+        if(customer.getEmailVerified() == Verify.VERIFIED) throw new CredentialsException("Email cannot be changed once verified.");
 
         List<String > emails = checkEmailService.getAllRegisteredEmails();
 
@@ -170,6 +169,6 @@ public class CustomerServiceImpl implements CustomerService{
             return "Email verified successfully.";
         }
 
-        return "Wrong otp entered.";
+        throw new ValidationException("Wrong otp entered.");
     }
 }

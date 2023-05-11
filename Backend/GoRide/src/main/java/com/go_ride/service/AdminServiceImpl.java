@@ -3,6 +3,7 @@ package com.go_ride.service;
 import com.go_ride.exception.AdminException;
 import com.go_ride.exception.CredentialsException;
 import com.go_ride.exception.UserSessionException;
+import com.go_ride.exception.ValidationException;
 import com.go_ride.model.*;
 import com.go_ride.repository.*;
 import net.bytebuddy.utility.RandomString;
@@ -80,11 +81,10 @@ public class AdminServiceImpl implements AdminService{
 
         checkEmailService.checkAdminCredentials(admin.getEmail(), passwordDTO.getOldPassword());
         List<UserSession> sessions = userSessionRepo.findByEmail(admin.getEmail());
-        userSessionRepo.deleteAll(sessions);
         admin.setPassword(passwordDTO.getNewPassword());
         adminRepo.save(admin);
-
-        return "Admin password changed successfully and " + logInLogOutService.logOutUser(uuid);
+        userSessionRepo.deleteAll(sessions);
+        return "Admin password changed successfully";
     }
 
     @Override
@@ -92,6 +92,8 @@ public class AdminServiceImpl implements AdminService{
         UserSession session = userSessionRepo.findById(uuid).orElseThrow(() -> new UserSessionException("User not logged in."));
 
         Admin admin = adminRepo.findById(session.getEmail()).orElseThrow(() -> new AdminException("User not found."));
+
+        if(admin.getEmailVerified() == Verify.VERIFIED) throw new CredentialsException("Email cannot be changed once verified.");
 
         List<String > emails = checkEmailService.getAllRegisteredEmails();
 
@@ -162,6 +164,6 @@ public class AdminServiceImpl implements AdminService{
             return "Email verified successfully.";
         }
 
-        return "Wrong otp entered.";
+        throw new ValidationException("Wrong otp entered.");
     }
 }

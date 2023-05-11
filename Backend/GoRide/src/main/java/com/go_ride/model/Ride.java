@@ -34,6 +34,7 @@ public class Ride {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime completedDateTime;
 
+    @NotNull(message = "Minimum number of passenger should be 1.")
     @Min(value = 1, message = "Minimum number of passenger should be 1.")
     private Integer noOfPassengers;
 

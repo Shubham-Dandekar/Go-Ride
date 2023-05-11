@@ -27,6 +27,7 @@ public class Vehicle {
     private Integer seats;
 
     @NotNull(message = "Per Km Rate should not be null.")
+    @Min(value = 1, message = "Per Km Rate at least ₹1")
     private Double perKmRate;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)

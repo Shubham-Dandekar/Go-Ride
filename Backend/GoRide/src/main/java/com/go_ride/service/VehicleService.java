@@ -17,5 +17,5 @@ public interface VehicleService {
 
     Integer countVehiclesByType(String uuid, String vehicleType);
 
-    Integer countAllVehicles(String uuid);
+    List<Vehicle> getAllVehicles(String uuid);
 }

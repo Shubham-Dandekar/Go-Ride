@@ -1,9 +1,6 @@
 package com.go_ride.service;
 
-import com.go_ride.exception.AdminException;
-import com.go_ride.exception.CredentialsException;
-import com.go_ride.exception.CustomerException;
-import com.go_ride.exception.UserSessionException;
+import com.go_ride.exception.*;
 
 import com.go_ride.model.*;
 import com.go_ride.repository.DriverRepository;
@@ -90,7 +87,7 @@ public class DriverServiceImpl implements DriverService{
         driver.setPassword(passwordDTO.getNewPassword());
         driverRepo.save(driver);
 
-        return "Driver password changed successfully and " + logInLogOutService.logOutUser(uuid);
+        return "Driver password changed successfully";
     }
 
     @Override
@@ -98,6 +95,8 @@ public class DriverServiceImpl implements DriverService{
         UserSession session = userSessionRepo.findById(uuid).orElseThrow(() -> new UserSessionException("User not logged in."));
 
         Driver driver = driverRepo.findById(session.getEmail()).orElseThrow(() -> new AdminException("User not found."));
+
+        if(driver.getEmailVerified() == Verify.VERIFIED) throw new CredentialsException("Email cannot be changed once verified.");
 
         List<String > emails = checkEmailService.getAllRegisteredEmails();
 
@@ -171,6 +170,6 @@ public class DriverServiceImpl implements DriverService{
             driverRepo.save(driver);
             return "Email verified successfully.";
         }
-        return "Wrong otp entered.";
+        throw new ValidationException("Wrong otp entered.");
     }
 }

@@ -21,7 +21,7 @@ public interface RideService {
 
     List<RideTicket> ViewAllRidesByDriver(String uuid);
 
-    List<Ride> getAllRides(String uuid);
+    List<RideTicket> getAllRides(String uuid);
 
     List<Ride> getRidesByDate(String uuid, LocalDateTime dateTime);
 

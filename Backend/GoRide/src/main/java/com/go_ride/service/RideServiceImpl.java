@@ -52,8 +52,11 @@ public class RideServiceImpl implements RideService{
                         .orElseThrow(() -> new VehicleException("No vehicle found for registration no: "
                         + rideDTO.getVehicleRegNo()));
 
-        if(!vehicle.getAvailable()) throw  new VehicleException("Vehicle not available for registration no: "
+        if(!vehicle.getAvailable()) throw  new VehicleException("Vehicle not available of registration no: "
                 + rideDTO.getVehicleRegNo());
+
+        if(vehicle.getSeats() < rideDTO.getNoOfPassengers())  throw  new VehicleException("No of passengers must not be " +
+                "more than seats available for your selected vehicle!");
 
         if(drivers.isEmpty()) throw new DriverException("Driver is not available.");
 
@@ -70,7 +73,7 @@ public class RideServiceImpl implements RideService{
         ride.setVehicle(vehicle);
         vehicle.setAvailable(false);
 
-        ride.setCustomerName(customer.getName());
+        ride.setCustomerName(customer.getEmail());
         ride.setBill(vehicle.getPerKmRate() * ride.getDistanceInKm());
         ride.setStatus(Status.CONFIRMED);
 
@@ -102,11 +105,15 @@ public class RideServiceImpl implements RideService{
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
-        Customer customer = customerRepo.findById(session.getEmail())
-                .orElseThrow(() -> new CredentialsException("Invalid credentials."));
-
         Ride existingRide = rideRepo.findById(rideId)
                 .orElseThrow(() -> new RideException("No ride found for id: " + rideId));
+
+        Customer customer = customerRepo.findById(existingRide.getCustomerName())
+                .orElseThrow(() -> new CredentialsException("Invalid credentials."));
+
+        if(LocalDateTime.now().isAfter(existingRide.getBoardingDateTime()) ||
+                LocalDateTime.now().isEqual(existingRide.getBoardingDateTime()))
+            throw new RideException("Ride cannot be cancelled after boarding time");
 
         Vehicle vehicle = existingRide.getVehicle();
         vehicle.setAvailable(true);
@@ -199,13 +206,25 @@ public class RideServiceImpl implements RideService{
     }
 
     @Override
-    public List<Ride> getAllRides(String uuid) {
+    public List<RideTicket> getAllRides(String uuid) {
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
         if(session.getRole() != Role.ADMIN) throw new AdminException("You are not admin.");
 
-        return rideRepo.findAll();
+        List<Ride> rides = rideRepo.findAll();
+        List<RideTicket> tickets = new ArrayList<>();
+
+        for (Ride ride: rides) {
+            RideTicket ticket = new RideTicket(ride);
+            ticket.setCustomer(ride.getCustomerName());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            ticket.setBoardingDateTime(ride.getBoardingDateTime().format(formatter));
+
+            tickets.add(ticket);
+        }
+
+        return tickets;
     }
 
     @Override
@@ -248,6 +267,10 @@ public class RideServiceImpl implements RideService{
 
         Ride ride = rideRepo.findById(rideId)
                 .orElseThrow(() -> new RideException("No ride found for id: " + rideId));
+
+        if(LocalDateTime.now().isBefore(ride.getBoardingDateTime()) ||
+                LocalDateTime.now().isEqual(ride.getBoardingDateTime()))
+            throw new RideException("Ride cannot be completed before boarding time");
 
         Driver driver = ride.getDriver();
         driver.setAvailable(true);

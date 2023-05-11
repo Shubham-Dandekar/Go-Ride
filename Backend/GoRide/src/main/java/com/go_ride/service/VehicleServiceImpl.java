@@ -63,8 +63,7 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public List<Vehicle> viewAvailableVehicle(String uuid) {
-        UserSession userSession = userSessionRepo.findById(uuid)
-                .orElseThrow(() -> new UserSessionException("User not logged in."));
+        userSessionRepo.findById(uuid).orElseThrow(() -> new UserSessionException("User not logged in."));
 
         return vehicleRepo.findByAvailable(true);
     }
@@ -95,12 +94,12 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     @Override
-    public Integer countAllVehicles(String uuid) {
+    public List<Vehicle> getAllVehicles(String uuid) {
         UserSession userSession = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
         if(userSession.getRole() != Role.ADMIN) new AdminException("You are not admin.");
 
-        return vehicleRepo.countAll();
+        return vehicleRepo.findAll();
     }
 }

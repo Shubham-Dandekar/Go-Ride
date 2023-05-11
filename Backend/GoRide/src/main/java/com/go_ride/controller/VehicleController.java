@@ -46,8 +46,8 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleService.countVehiclesByType(uuid, vehicleType), HttpStatus.OK);
     }
 
-    @GetMapping("/countAll/{uuid}")
-    public ResponseEntity<Integer> countAllVehicles(@PathVariable("uuid") String uuid) {
-        return new ResponseEntity<>(vehicleService.countAllVehicles(uuid), HttpStatus.OK);
+    @GetMapping("/all/{uuid}")
+    public ResponseEntity<List<Vehicle>> countAllVehicles(@PathVariable("uuid") String uuid) {
+        return new ResponseEntity<>(vehicleService.getAllVehicles(uuid), HttpStatus.OK);
     }
 }

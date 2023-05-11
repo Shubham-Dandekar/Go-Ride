@@ -51,7 +51,7 @@ public class RideController {
     }
 
     @GetMapping("/all/{uuid}")
-    public ResponseEntity<List<Ride>> getAllRides(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<List<RideTicket>> getAllRides(@PathVariable("uuid") String uuid) {
         return new ResponseEntity<>(rideService.getAllRides(uuid), HttpStatus.OK);
     }
 
@@ -70,7 +70,7 @@ public class RideController {
         return new ResponseEntity<>(rideService.getRidesByVehicle(uuid, registrationNo), HttpStatus.OK);
     }
 
-    @GetMapping("/complete/{uuid}/{rideId}")
+    @PatchMapping("/complete/{uuid}/{rideId}")
     public ResponseEntity<String> completeRide(@PathVariable("uuid") String uuid, @PathVariable("rideId") Integer rideId) {
         return new ResponseEntity<>(rideService.completeRide(uuid, rideId), HttpStatus.OK);
     }
