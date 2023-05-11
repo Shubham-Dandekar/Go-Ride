@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Go Ride | Book New Rides</title>
+        <!------------------------------ Style CSS ------------------------------>
+        <link rel="stylesheet" href="./CSS/index.css" />
+        <link rel="stylesheet" href="./CSS/addride.css" />
+        <link rel="stylesheet" href="./CSS/navbar.css" />
+        <link rel="stylesheet" href="./CSS/signin.css" />
+        <!------------------------------ Icons ------------------------------>
+        <link
+            rel="stylesheet"
+            href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css"
+        />
+    </head>
+    <body>
+        <!--------------------------Navbar Section Starts-------------------------->
+        <nav class="navbar">
+            <ul class="logo-container">
+                <li class="logo"><a href="./home.html">Go Ride</a></li>
+            </ul>
+            <ul class="menu">
+                <li class="close-menu" onclick="closeMenu()">
+                    <i class="fa-duotone fa-circle-xmark"></i>
+                </li>
+                <li class="menu-list">
+                    <a
+                        href="./home.html"
+                        class="menu-item"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-house"></i>Home</a
+                    >
+                </li>
+                <li class="menu-list">
+                    <a
+                        href="./rides.html"
+                        class="menu-item"
+                        id="active"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-car fa-fade"></i>Rides</a
+                    >
+                </li>
+                <li class="menu-list" id="profile">
+                    <a
+                        href="./SignIn.html"
+                        class="menu-item"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-user"></i>Sign In</a
+                    >
+                    <ul id="login">
+                        <li onclick="profile()">
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li onclick="vehicle()" id="vehicle" hidden>
+                            <a href="./vehicle.html">Vehicles</a>
+                        </li>
+                        <li onclick="logout()"><a href="#">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu-button">
+                <li class="open-menu" onclick="openMenu()">
+                    <i class="fa-duotone fa-bars"></i>
+                </li>
+            </ul>
+        </nav>
+        <!--------------------------Navbar Section Ends-------------------------->
+        <!--------------------------Book New Section Starts-------------------------->
+        <form>
+            <h3>Book New Ride</h3>
+            <label for="boardingloc">Boarding Point</label>
+            <input
+                type="text"
+                name="boardingloc"
+                id="boardingloc"
+                placeholder="Enter your boarding point"
+                required
+            />
+            <label for="destloc">Destination Point</label>
+            <input
+                type="text"
+                name="destloc"
+                id="destloc"
+                placeholder="Enter your destination point"
+                required
+            />
+            <label for="boardingtime">Boarding Date Time</label>
+            <input
+                type="datetime-local"
+                name="boardingtime"
+                id="boardingtime"
+                placeholder="Enter your boarding date time"
+                required
+            />
+            <label for="passangers">No of Passangers</label>
+            <input
+                type="number"
+                name="passangers"
+                id="passangers"
+                placeholder="Enter no of passangers"
+                required
+            />
+            <label for="distance">Distance in Km</label>
+            <input
+                type="number"
+                name="distance"
+                id="distance"
+                placeholder="Enter distance in Km"
+                required
+            />
+            <label for="vehiclereg">Vehicle Registration No</label>
+            <input
+                type="text"
+                name="vehiclereg"
+                id="vehiclereg"
+                placeholder="Enter vehicle registration no"
+                required
+            />
+            <button type="submit" id="button">Book Ride</button>
+        </form>
+        <div id="vehicles">
+            <h3>Available Vehicles</h3>
+            <div></div>
+        </div>
+        <!--------------------------Book New Section Ends-------------------------->
+    </body>
+</html>
+<script src="./Script/navbar.js"></script>
+<script src="./Script/addride.js"></script>

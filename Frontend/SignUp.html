@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Go Ride | SignUp</title>
+        <!------------------------------ Style CSS ------------------------------>
+        <link rel="stylesheet" href="./CSS/index.css" />
+        <link rel="stylesheet" href="./CSS/signup.css" />
+        <link rel="stylesheet" href="./CSS/navbar.css" />
+        <!------------------------------ Icons ------------------------------>
+        <link
+            rel="stylesheet"
+            href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css"
+        />
+    </head>
+    <body>
+        <!--------------------------Navbar Section Starts-------------------------->
+        <nav class="navbar">
+            <ul class="logo-container">
+                <li class="logo"><a href="./home.html">Go Ride</a></li>
+            </ul>
+            <ul class="menu">
+                <li class="close-menu" onclick="closeMenu()">
+                    <i class="fa-duotone fa-circle-xmark"></i>
+                </li>
+                <li class="menu-list">
+                    <a
+                        href="./home.html"
+                        class="menu-item"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-house"></i>Home</a
+                    >
+                </li>
+                <li class="menu-list">
+                    <a
+                        href="./rides.html"
+                        class="menu-item"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-car fa-fade"></i>Rides</a
+                    >
+                </li>
+                <li class="menu-list" id="profile">
+                    <a
+                        href="./SignIn.html"
+                        class="menu-item"
+                        onclick="closeMenu()"
+                        ><i class="fa-duotone fa-user"></i>Sign In</a
+                    >
+                    <ul id="login">
+                        <li onclick="profile()">
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li onclick="vehicle()" id="vehicle" hidden>
+                            <a href="./vehicle.html">Vehicles</a>
+                        </li>
+                        <li onclick="logout()"><a href="#">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu-button">
+                <li class="open-menu" onclick="openMenu()">
+                    <i class="fa-duotone fa-bars"></i>
+                </li>
+            </ul>
+        </nav>
+        <!--------------------------Navbar Section Ends-------------------------->
+
+        <!--------------------------SignUp Form Section Starts-------------------------->
+        <form>
+            <h3>Sign Up to Go Ride</h3>
+            <label for="email">Email</label>
+            <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            />
+            <label for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                required
+            />
+            <label for="city">City</label>
+            <input
+                type="text"
+                name="city"
+                id="city"
+                placeholder="Enter your city"
+                required
+            />
+            <label for="state">State</label>
+            <input
+                type="text"
+                name="state"
+                id="state"
+                placeholder="Enter your state"
+                required
+            />
+            <label for="pincode">Pin Code</label>
+            <input
+                type="number"
+                name="pincode"
+                id="pincode"
+                placeholder="Enter your pin code"
+                required
+            />
+            <label for="password">Password</label>
+            <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                required
+            />
+            <div id="show-password-box">
+                <input
+                    type="checkbox"
+                    name="show-password"
+                    id="show-password"
+                    onclick="showPassword()"
+                />
+                <p>Show password</p>
+            </div>
+            <div id="usertype">
+                <label for="user">User Type</label>
+                <select name="user" id="user">
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="CUSTOMER">CUSTOMER</option>
+                    <option value="DRIVER">DRIVER</option>
+                </select>
+            </div>
+            <label for="license" id="license-label" hidden>Licence No</label>
+            <input
+                type="text"
+                name="license"
+                id="license"
+                placeholder="Enter your Licence No"
+                hidden
+            />
+            <button type="submit" id="button">Sign Up</button>
+            <p id="account">
+                Already have an account? <a href="./SignIn.html">Sign In</a>
+            </p>
+        </form>
+        <!--------------------------SignUp Form Section Ends-------------------------->
+    </body>
+</html>
+<script src="./Script/navbar.js"></script>
+<script src="./Script/signup.js"></script>

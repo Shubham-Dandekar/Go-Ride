@@ -1,0 +1,35 @@
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > h1 {
+  text-align: center;
+}
+
+.container > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container > div > a {
+  padding: 0.5rem 1.3rem;
+  border-radius: 5rem;
+  color: #ffffff;
+  background-color: #b0aba3;
+  border: 2px solid #dad8d4;
+  transition: all 0.5s ease-in-out;
+}
+
+.container > div > a:hover {
+  padding: 0.5rem 1.5rem;
+  transition: all 0.5s ease-in-out;
+  background-color: #ae9460;
+}
+
+.container > div > a > i {
+  margin-right: 0.5rem;
+}

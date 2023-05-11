@@ -1,0 +1,132 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  padding: 1.5rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.2s ease-in;
+  background-color: #ae9460;
+}
+
+.navbar > .logo-container {
+  position: relative;
+  transition: all 0.5s ease-in;
+}
+
+.navbar > .logo-container:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease-in;
+}
+
+.navbar > .logo-container > .logo > a {
+  font-size: 1.9rem;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.5s ease-in;
+}
+
+.navbar > .logo-container > .logo > a:hover {
+  transition: all 0.5s ease-in;
+}
+
+.navbar > .menu {
+  display: inline-flex;
+  gap: 1.5rem;
+}
+
+.navbar > .menu > .menu-list {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar > .menu > .menu-list > a {
+  font-size: 1.05rem;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+}
+
+.navbar > .menu > .menu-list:not(:last-child):hover {
+  transform: translate(0, -10px);
+}
+
+.navbar > .menu > .menu-list:last-child:hover {
+  transform: scale(105%);
+}
+
+.navbar > .menu > .menu-list > a > i {
+  margin-right: 0.5rem;
+}
+
+.navbar > .menu > #profile > a {
+  padding: 0.5rem 1.3rem;
+  border-radius: 5rem;
+  color: #ffffff;
+  background-color: #b0aba3;
+  border: 2px solid #dad8d4;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar > .menu > #profile > a:hover {
+  padding: 0.5rem 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar > .menu > .menu-list > #active {
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar > .menu > .menu-list > #active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  left: 0;
+  bottom: -3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar > .menu > .close-menu,
+.navbar > .menu-button {
+  display: none;
+}
+
+#login {
+  display: none;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 3rem;
+  border: 3px solid #ae9460;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+#login > li {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+#login > li:hover {
+  background-color: #ae9460;
+}
+
+#login > li > a {
+  min-width: 100%;
+}
+
+#login > li:hover > a {
+  color: #ffffff;
+}

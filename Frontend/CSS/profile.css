@@ -1,0 +1,85 @@
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#profilediv {
+    width: fit-content;
+    padding: 2rem;
+    border: 2px solid #ae9460;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+#profilediv > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#profilediv p {
+    font-size: 18px;
+}
+
+.verify {
+    cursor: pointer;
+}
+
+#change-password {
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    margin: 1.5rem auto;
+    color: #ae9460;
+    border: 2px solid #ae9460;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#change-password:hover {
+    background-color: #ae9460;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.otpbox {
+    min-width: 1.5rem;
+    font-size: 18px;
+    padding: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.otpbox:focus {
+    border: 2px solid #ae9460;
+    transition: all 0.3s ease-in-out;
+}
+
+button {
+    display: block;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    color: #ae9460;
+    border: 2px solid #ae9460;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #ae9460;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
