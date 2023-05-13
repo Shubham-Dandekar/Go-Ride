@@ -37,7 +37,7 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 -   The authentication and validation of the administrator, the customer, and the driver using the session uuid provided.
 
 ## Languages Used:
-
+![java-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/5b9036f1-4e55-4643-a8f0-79240957132d)
 -   Java
 -   Maven
 -   SpringBoot
