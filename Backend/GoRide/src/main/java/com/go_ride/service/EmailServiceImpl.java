@@ -1,11 +1,15 @@
 package com.go_ride.service;
 
 import com.go_ride.exception.CredentialsException;
+import com.go_ride.model.Ride;
+import jakarta.mail.internet.InternetAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.io.UnsupportedEncodingException;
 
 @Service
 public class EmailServiceImpl implements EmailService{
@@ -24,7 +28,7 @@ public class EmailServiceImpl implements EmailService{
         String message = "Dear " + name + "\nThank you for joining the Go Ride community! " +
                 "We are excited to have you on board and look forward to providing you with exceptional" +
                 " service.\nThank you for choosing Go Ride. We hope you enjoy your experience with us." +
-                "Best regards,\nGo Ride Team";
+                "\nBest regards,\nGo Ride Team";
 
         mailMessage.setText(message);
 
@@ -96,7 +100,7 @@ public class EmailServiceImpl implements EmailService{
     }
 
     @Override
-    public void sendNewRideEmail(String emailAddress, String name) {
+    public void sendNewRideEmail(String emailAddress, String name, Ride ride) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom("shubhamdandekar9@gmail.com");
@@ -106,6 +110,11 @@ public class EmailServiceImpl implements EmailService{
         StringBuilder message = new StringBuilder("Dear " + name + "\n");
         message.append("Your ride has booked been successfully. " +
                 "For more details check your account.\n");
+        message.append("Boarding Location: " + ride.getBoardingLocation());
+        message.append("\nDestination Location: " + ride.getDestinationLocation());
+        message.append("\nBoarding Date & Time: " + ride.getBoardingDateTime());
+        message.append("\nNote: Time is in 24 hour format.");
+        message.append("\nHappy journey with Go Ride.\n");
         message.append("Best regards,\nGo Ride Team");
 
         mailMessage.setText(message.toString());
@@ -118,7 +127,7 @@ public class EmailServiceImpl implements EmailService{
     }
 
     @Override
-    public void sendRideCancellationEmail(String emailAddress, String name) {
+    public void sendRideCancellationEmail(String emailAddress, String name, Ride ride) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom("shubhamdandekar9@gmail.com");
@@ -128,6 +137,10 @@ public class EmailServiceImpl implements EmailService{
         StringBuilder message = new StringBuilder("Dear " + name + "\n");
         message.append("Your ride has been cancelled successfully." +
                 "For more details check your account.\n");
+        message.append("Boarding Location: " + ride.getBoardingLocation());
+        message.append("\nDestination Location: " + ride.getDestinationLocation());
+        message.append("\nBoarding Date & Time: " + ride.getBoardingDateTime());
+        message.append("\nNote: Time is in 24 hour format.\n");
         message.append("Best regards,\nGo Ride Team");
 
         mailMessage.setText(message.toString());

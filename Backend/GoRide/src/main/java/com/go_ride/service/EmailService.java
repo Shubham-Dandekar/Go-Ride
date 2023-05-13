@@ -1,5 +1,10 @@
 package com.go_ride.service;
 
+import com.go_ride.model.Ride;
+import org.springframework.mail.MailException;
+
+import java.io.UnsupportedEncodingException;
+
 public interface EmailService {
     void sendWelcomeEmail(String emailAddress, String name);
 
@@ -9,7 +14,7 @@ public interface EmailService {
 
     void sendVerificationEmail(String emailAddress, Integer otp);
 
-    void sendNewRideEmail(String emailAddress, String name);
+    void sendNewRideEmail(String emailAddress, String name,  Ride ride);
 
-    void sendRideCancellationEmail(String emailAddress, String name);
+    void sendRideCancellationEmail(String emailAddress, String name, Ride ride);
 }

@@ -84,7 +84,7 @@ public class RideServiceImpl implements RideService{
         vehicleRepo.save(vehicle);
         customerRepo.save(customer);
 
-        emailService.sendNewRideEmail(customer.getEmail(), customer.getName());
+        emailService.sendNewRideEmail(customer.getEmail(), customer.getName(), ride);
 
         RideTicket ticket = new RideTicket(rideDTO);
         ticket.setId(ride.getId());
@@ -128,7 +128,7 @@ public class RideServiceImpl implements RideService{
         vehicleRepo.save(vehicle);
         rideRepo.save(existingRide);
 
-        emailService.sendRideCancellationEmail(customer.getEmail(), customer.getName());
+        emailService.sendRideCancellationEmail(customer.getEmail(), customer.getName(), existingRide);
 
         return "Ride cancelled successfully.";
     }
