@@ -77,40 +77,16 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 
 ## Languages Used:
 
-<div display="flex" flex-wrap="wrap">
-    <div display = "flex" flex-direction: "column" width="100%">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/2c9da46f-9842-4f20-802b-a4444f2647d9" alt="java-icon" />
-        <p width="fit-content">Java</p>
-    </div>
-    <div display = "flex" flex-direction: "column"  width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/0ddfe218-74b9-44e4-916f-f602deb3db3c" alt="maven-icon"  width="fit-content"/>
-        <p width="fit-content">Maven</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/e99fa175-f428-4595-95f1-a3cdf6670d9e" alt="spring-icon"  width="fit-content"/>
-        <p width="fit-content">SpringBoot</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/b334ee4c-f987-41da-ae0e-e162a11dffb6" alt="hibernate-icon"  width="fit-content"/>
-        <p width="fit-content">Hibernate-JPA</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cab68cbd-57d8-43f8-beff-105dc669f99f" alt="MySQL-icon"  width="fit-content"/>
-        <p width="fit-content">MySQL</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/bd270ad6-34e2-4162-9b23-f2ff59af8a8e" alt="HTML-icon"  width="fit-content"/>
-        <p width="fit-content">HTML</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/39d52511-9b28-4aca-9cf1-3af41ba766c8" alt="CSS-icon"  width="fit-content"/>
-        <p width="fit-content">CSS</p>
-    </div>
-    <div display = "flex" flex-direction: "column" width="fit-content">
-        <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cfee10f6-47b7-400e-aa27-7abb8906d402" alt="javascript-icon"  width="fit-content"/>
-        <p width="fit-content">JavaScript</p>
-    </div>
-</div>
+<p align="center">
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/2c9da46f-9842-4f20-802b-a4444f2647d9" alt="java-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/0ddfe218-74b9-44e4-916f-f602deb3db3c" alt="maven-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/e99fa175-f428-4595-95f1-a3cdf6670d9e" alt="spring-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/b334ee4c-f987-41da-ae0e-e162a11dffb6" alt="hibernate-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cab68cbd-57d8-43f8-beff-105dc669f99f" alt="MySQL-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/bd270ad6-34e2-4162-9b23-f2ff59af8a8e" alt="HTML-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/39d52511-9b28-4aca-9cf1-3af41ba766c8" alt="CSS-icon" width="50" height="50" />
+  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cfee10f6-47b7-400e-aa27-7abb8906d402" alt="javascript-icon" width="50" height="50" />
+</p>
 
 ## Tools Used:
 
