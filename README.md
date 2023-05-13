@@ -129,6 +129,6 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 -   Your password should be modified to match the MySQL database password.
 -   To use email services in the project, spring.mail.username & spring.mail.password must be specified in the resource's application.properties file.
 
-## Authors
+## Author:
 
 [@Shubham-Dandekar](https://github.com/Shubham-Dandekar)
