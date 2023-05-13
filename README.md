@@ -77,16 +77,76 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 
 ## Languages Used:
 
-<p align="center">
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/2c9da46f-9842-4f20-802b-a4444f2647d9" alt="java-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/0ddfe218-74b9-44e4-916f-f602deb3db3c" alt="maven-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/e99fa175-f428-4595-95f1-a3cdf6670d9e" alt="spring-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/b334ee4c-f987-41da-ae0e-e162a11dffb6" alt="hibernate-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cab68cbd-57d8-43f8-beff-105dc669f99f" alt="MySQL-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/bd270ad6-34e2-4162-9b23-f2ff59af8a8e" alt="HTML-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/39d52511-9b28-4aca-9cf1-3af41ba766c8" alt="CSS-icon" width="50" height="50" />
-  <img src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cfee10f6-47b7-400e-aa27-7abb8906d402" alt="javascript-icon" width="50" height="50" />
-</p>
+<table width="100%">
+    <tbody>
+        <tr valign="top">
+            <td align="center">
+                <p dir="auto"><span>Java</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/2c9da46f-9842-4f20-802b-a4444f2647d9"
+                    alt="java-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>Maven</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/0ddfe218-74b9-44e4-916f-f602deb3db3c"
+                    alt="maven-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>SpringBoot</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/e99fa175-f428-4595-95f1-a3cdf6670d9e"
+                    alt="spring-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>Hibernate-JPA</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/b334ee4c-f987-41da-ae0e-e162a11dffb6"
+                    alt="hibernate-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>MySQL</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cab68cbd-57d8-43f8-beff-105dc669f99f"
+                    alt="MySQL-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>HTML</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/bd270ad6-34e2-4162-9b23-f2ff59af8a8e"
+                    alt="HTML-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>CSS</span><br /><br /></p>
+                <img
+                    <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/39d52511-9b28-4aca-9cf1-3af41ba766c8"
+                    alt="CSS-icon"
+                />
+            </td>
+
+            <td align="center">
+                <p dir="auto"><span>JavaScript</span><br /><br /></p>
+                <img
+                    src="https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cfee10f6-47b7-400e-aa27-7abb8906d402"
+                    alt="javascript-icon"
+                />
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ## Tools Used:
 
