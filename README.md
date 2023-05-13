@@ -37,14 +37,21 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 -   The authentication and validation of the administrator, the customer, and the driver using the session uuid provided.
 
 ## Languages Used:
-![java-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/5b9036f1-4e55-4643-a8f0-79240957132d)
+![java-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/2c9da46f-9842-4f20-802b-a4444f2647d9)
 -   Java
+
 -   Maven
+![spring-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/e99fa175-f428-4595-95f1-a3cdf6670d9e)
 -   SpringBoot
+![hibernate-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/b334ee4c-f987-41da-ae0e-e162a11dffb6)
 -   Hibernate-JPA
+![mysql-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cab68cbd-57d8-43f8-beff-105dc669f99f)
 -   MySQL
+![html-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/bd270ad6-34e2-4162-9b23-f2ff59af8a8e)
 -   HTML
+![css-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/39d52511-9b28-4aca-9cf1-3af41ba766c8)
 -   CSS
+![javascript-icon](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/cfee10f6-47b7-400e-aa27-7abb8906d402)
 -   JavaScript
 
 ## Tools Used:
