@@ -8,13 +8,10 @@
 }
 
 #vehicles-container > #add-vehicle {
-    width: 98%;
-    min-height: 10rem;
-    border: 2px solid #ae9460;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #vehicles-container > #add-vehicle > span {
@@ -29,7 +26,8 @@
     transition: all 0.3s ease-in-out;
 }
 
-.vehicle {
+.vehicle,
+#add-vehicle {
     width: 90%;
     min-height: 10rem;
     border: 2px solid #ae9460;
@@ -43,4 +41,32 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+button {
+    cursor: pointer;
+    width: fit-content;
+    padding: 0.2rem 0.5rem;
+    font-size: 16px;
+    margin-top: 0.5rem;
+    color: #ae9460;
+    border: 2px solid #ae9460;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.changeRate:hover,
+.remove:hover {
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.changeRate:hover {
+    background-color: #2e5cb8;
+}
+
+.remove:hover {
+    background-color: #ff0000;
 }

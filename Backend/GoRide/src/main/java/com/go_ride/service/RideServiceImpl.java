@@ -3,6 +3,7 @@ package com.go_ride.service;
 import com.go_ride.exception.*;
 import com.go_ride.model.*;
 import com.go_ride.repository.*;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class RideServiceImpl implements RideService{
 
 
     @Override
-    public RideTicket addNewRide(String uuid, RideDTO rideDTO) {
+    public RideTicket addNewRide(String uuid, RideDTO rideDTO) throws MessagingException {
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
@@ -101,7 +102,7 @@ public class RideServiceImpl implements RideService{
     }
 
     @Override
-    public String cancelRide(String uuid, Integer rideId) {
+    public String cancelRide(String uuid, Integer rideId) throws MessagingException {
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 

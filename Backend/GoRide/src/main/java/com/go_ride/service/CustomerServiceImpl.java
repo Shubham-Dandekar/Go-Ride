@@ -4,10 +4,12 @@ import com.go_ride.exception.*;
 import com.go_ride.model.*;
 import com.go_ride.repository.CustomerRepository;
 import com.go_ride.repository.UserSessionRepository;
+import jakarta.mail.MessagingException;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -31,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService{
     private EmailService emailService;
 
     @Override
-    public UserSession addNewCustomer(Customer customer) {
+    public UserSession addNewCustomer(Customer customer) throws MessagingException, UnsupportedEncodingException {
         List<String> emails = checkEmailService.getAllRegisteredEmails();
 
         if(!emails.isEmpty() && emails.contains(customer.getEmail()))
@@ -48,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public String deleteExistingCustomer(String uuid) {
+    public String deleteExistingCustomer(String uuid) throws MessagingException {
         UserSession userSession = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
@@ -124,7 +126,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public String forgotPassword(String email) {
+    public String forgotPassword(String email) throws MessagingException {
         Customer customer = customerRepo.findById(email).orElseThrow(() -> new AdminException("User not found."));
 
         String password = RandomString.make(16);
@@ -140,7 +142,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public String sendVerificationOtpMail(String uuid) {
+    public String sendVerificationOtpMail(String uuid) throws MessagingException {
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 

@@ -34,18 +34,16 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     @Override
-    public Vehicle updateVehicle(String uuid, Vehicle vehicle) {
+    public Vehicle updatePerKmRate(String uuid, String registrationNo, Double perKmRate) {
         UserSession userSession = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
         if(userSession.getRole() != Role.ADMIN) new AdminException("You are not admin.");
 
-        Vehicle existingVehicle = vehicleRepo.findById(vehicle.getRegistrationNo())
-                .orElseThrow(() -> new VehicleException("Vehicle not found with registration no: " + vehicle.getRegistrationNo()));
+        Vehicle existingVehicle = vehicleRepo.findById(registrationNo)
+                .orElseThrow(() -> new VehicleException("Vehicle not found with registration no: " + registrationNo));
 
-        existingVehicle.setVehicleType(vehicle.getVehicleType());
-        existingVehicle.setAvailable(vehicle.getAvailable());
-        existingVehicle.setPerKmRate(vehicle.getPerKmRate());
+        existingVehicle.setPerKmRate(perKmRate);
         existingVehicle.setAvailable(true);
 
         return vehicleRepo.save(existingVehicle);
@@ -77,6 +75,9 @@ public class VehicleServiceImpl implements VehicleService{
 
         Vehicle existingVehicle = vehicleRepo.findById(vehicleRegistrationNo)
                 .orElseThrow(() -> new VehicleException("Vehicle not found with registration no: " + vehicleRegistrationNo));
+
+        if(!existingVehicle.getAvailable())
+            throw new VehicleException("Vehicle currently booked for a ride. Hence unable to delete at this moment.");
 
         vehicleRepo.delete(existingVehicle);
 

@@ -52,7 +52,7 @@ form > input:focus {
     cursor: pointer;
 }
 
-#show-password:checked{
+#show-password:checked {
     min-width: fit-content;
     accent-color: #ae9460;
 }
@@ -88,13 +88,13 @@ form > button {
     border: 2px solid #ae9460;
     background-color: #ffffff;
     border-radius: 10px;
-    cursor: pointer;    
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 form > button:hover {
     background-color: #ae9460;
-    color: #ffffff;    
+    color: #ffffff;
     transition: all 0.3s ease-in-out;
 }
 

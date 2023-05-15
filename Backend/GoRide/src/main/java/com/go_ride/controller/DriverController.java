@@ -2,11 +2,14 @@ package com.go_ride.controller;
 
 import com.go_ride.model.*;
 import com.go_ride.service.DriverService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("/go_ride/drivers")
@@ -15,12 +18,12 @@ public class DriverController {
     private DriverService driverService;
 
     @PostMapping("/")
-    public ResponseEntity<UserSession> addNewDriver(@Valid @RequestBody Driver driver) {
+    public ResponseEntity<UserSession> addNewDriver(@Valid @RequestBody Driver driver) throws MessagingException, UnsupportedEncodingException {
         return new ResponseEntity<>(driverService.addNewDriver(driver), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<String> deleteExistingDriver(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> deleteExistingDriver(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(driverService.deleteExistingDriver(uuid), HttpStatus.OK);
     }
 
@@ -46,12 +49,12 @@ public class DriverController {
     }
 
     @GetMapping("/forgotPassword/{email}")
-    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) {
+    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) throws MessagingException {
         return new ResponseEntity<>(driverService.forgotPassword(email), HttpStatus.OK);
     }
 
     @GetMapping("/verify/{uuid}")
-    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(driverService.sendVerificationOtpMail(uuid), HttpStatus.OK);
     }
 

@@ -1,6 +1,6 @@
 let user = JSON.parse(localStorage.getItem("user"));
 
+let container = document.querySelector(".container > div");
 if (user != undefined) {
-  let container = document.querySelector(".container > div");
-  container.remove();
+    container.remove();
 }

@@ -2,11 +2,14 @@ package com.go_ride.controller;
 
 import com.go_ride.model.*;
 import com.go_ride.service.CustomerService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("/go_ride/customers")
@@ -15,12 +18,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/")
-    public ResponseEntity<UserSession> addNewCustomer(@Valid @RequestBody Customer customer) {
+    public ResponseEntity<UserSession> addNewCustomer(@Valid @RequestBody Customer customer) throws MessagingException, UnsupportedEncodingException {
         return new ResponseEntity<>(customerService.addNewCustomer(customer), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<String> deleteExistingCustomer(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> deleteExistingCustomer(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(customerService.deleteExistingCustomer(uuid), HttpStatus.OK);
     }
 
@@ -46,12 +49,12 @@ public class CustomerController {
     }
 
     @GetMapping("/forgotPassword/{email}")
-    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) {
+    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) throws MessagingException {
         return new ResponseEntity<>(customerService.forgotPassword(email), HttpStatus.OK);
     }
 
     @GetMapping("/verify/{uuid}")
-    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(customerService.sendVerificationOtpMail(uuid), HttpStatus.OK);
     }
 

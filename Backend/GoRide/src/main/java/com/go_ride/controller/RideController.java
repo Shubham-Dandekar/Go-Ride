@@ -4,6 +4,7 @@ import com.go_ride.model.Ride;
 import com.go_ride.model.RideDTO;
 import com.go_ride.model.RideTicket;
 import com.go_ride.service.RideService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,12 @@ public class RideController {
     private RideService rideService;
 
     @PostMapping("/{uuid}")
-    public ResponseEntity<RideTicket> addNewRide(@PathVariable("uuid") String uuid, @Valid @RequestBody RideDTO rideDTO) {
+    public ResponseEntity<RideTicket> addNewRide(@PathVariable("uuid") String uuid, @Valid @RequestBody RideDTO rideDTO) throws MessagingException {
         return new ResponseEntity<>(rideService.addNewRide(uuid, rideDTO), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{uuid}/{rideId}")
-    public ResponseEntity<String> cancelRide(@PathVariable("uuid") String uuid, @PathVariable("rideId") Integer rideId) {
+    public ResponseEntity<String> cancelRide(@PathVariable("uuid") String uuid, @PathVariable("rideId") Integer rideId) throws MessagingException {
         return new ResponseEntity<>(rideService.cancelRide(uuid, rideId), HttpStatus.OK);
     }
 

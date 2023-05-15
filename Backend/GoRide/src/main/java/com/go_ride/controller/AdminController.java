@@ -2,11 +2,14 @@ package com.go_ride.controller;
 
 import com.go_ride.model.*;
 import com.go_ride.service.AdminService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
 
 @RestController
 @RequestMapping("/go_ride/admins")
@@ -15,12 +18,12 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/")
-    public ResponseEntity<UserSession> addNewAdmin(@Valid @RequestBody Admin admin) {
+    public ResponseEntity<UserSession> addNewAdmin(@Valid @RequestBody Admin admin) throws MessagingException, UnsupportedEncodingException {
         return new ResponseEntity<>(adminService.addNewAdmin(admin), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<String> deleteExistingAdmin(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> deleteExistingAdmin(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(adminService.deleteExistingAdmin(uuid), HttpStatus.OK);
     }
 
@@ -46,12 +49,12 @@ public class AdminController {
     }
 
     @GetMapping("/forgotPassword/{email}")
-    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) {
+    public ResponseEntity<String> forgotPassword(@PathVariable("email") String email) throws MessagingException {
         return new ResponseEntity<>(adminService.forgotPassword(email), HttpStatus.OK);
     }
 
     @GetMapping("/verify/{uuid}")
-    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) {
+    public ResponseEntity<String> sendVerificationOtpMail(@PathVariable("uuid") String uuid) throws MessagingException {
         return new ResponseEntity<>(adminService.sendVerificationOtpMail(uuid), HttpStatus.OK);
     }
 

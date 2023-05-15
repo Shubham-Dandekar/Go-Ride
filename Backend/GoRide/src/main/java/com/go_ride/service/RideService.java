@@ -3,15 +3,16 @@ package com.go_ride.service;
 import com.go_ride.model.Ride;
 import com.go_ride.model.RideDTO;
 import com.go_ride.model.RideTicket;
+import jakarta.mail.MessagingException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RideService {
-    RideTicket addNewRide(String uuid, RideDTO rideDTO);
+    RideTicket addNewRide(String uuid, RideDTO rideDTO) throws MessagingException;
 
-    String cancelRide(String uuid, Integer rideId);
+    String cancelRide(String uuid, Integer rideId) throws MessagingException;
 
     List<Ride> ViewAllRidesByCustomer(String uuid, String email);
 

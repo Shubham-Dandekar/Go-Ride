@@ -1,11 +1,14 @@
 package com.go_ride.service;
 
 import com.go_ride.model.*;
+import jakarta.mail.MessagingException;
+
+import java.io.UnsupportedEncodingException;
 
 public interface AdminService {
-    UserSession addNewAdmin(Admin admin);
+    UserSession addNewAdmin(Admin admin) throws MessagingException, UnsupportedEncodingException;
 
-    String deleteExistingAdmin(String uuid);
+    String deleteExistingAdmin(String uuid) throws MessagingException;
 
     Admin getDetails(String uuid);
 
@@ -15,9 +18,9 @@ public interface AdminService {
 
     String updateAddress(String uuid, Address address);
 
-    String forgotPassword(String email);
+    String forgotPassword(String email) throws MessagingException;
 
-    String sendVerificationOtpMail(String uuid);
+    String sendVerificationOtpMail(String uuid) throws MessagingException;
 
     String verifyEmail(String uuid, Integer otp);
 }

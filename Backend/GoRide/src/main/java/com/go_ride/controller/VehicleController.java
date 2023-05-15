@@ -21,9 +21,9 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleService.addNewVehicle(uuid, vehicle), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{uuid}")
-    public ResponseEntity<Vehicle> updateVehicle(@PathVariable("uuid") String uuid, @Valid @RequestBody Vehicle vehicle) {
-        return new ResponseEntity<>(vehicleService.updateVehicle(uuid, vehicle), HttpStatus.OK);
+    @PatchMapping("/{uuid}")
+    public ResponseEntity<Vehicle> updateVehicle(@PathVariable("uuid") String uuid, @RequestParam("vehicleRegistrationNo") String registrationNo, @RequestParam("perKmRate") Double perKmRate) {
+        return new ResponseEntity<>(vehicleService.updatePerKmRate(uuid, registrationNo, perKmRate), HttpStatus.OK);
     }
 
     @GetMapping("/{uuid}")

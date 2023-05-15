@@ -53,6 +53,13 @@ async function getVehicles() {
                 rateTag.innerText = "Per Km Rate: ";
                 let rate = document.createElement("p");
                 rate.innerText = "₹ " + vehicle.perKmRate;
+                let changeRate = document.createElement("button");
+                changeRate.innerText = "Change Rate";
+                changeRate.className = "changeRate";
+
+                changeRate.addEventListener("click", () => {
+                    changeRate(vehicle.registrationNo);
+                });
 
                 rateDiv.append(rateTag, rate);
 
@@ -61,15 +68,24 @@ async function getVehicles() {
                 availableTag.innerText = "Availability: ";
                 let available = document.createElement("p");
 
-                if (available) {
+                if (vehicle.available) {
                     available.innerText = "Available";
                     available.style.color = "#00b300";
-                } else {
-                    available.innerText = "Not Available";
-                    available.style.color = "#ff0000";
-                }
 
-                availableDiv.append(availableTag, available);
+                    let remove = document.createElement("button");
+                    remove.innerText = "Remove Vehicle";
+                    remove.className = "remove";
+
+                    remove.addEventListener("click", () => {
+                        removeVehicle(vehicle.registrationNo);
+                    });
+
+                    availableDiv.append(availableTag, available, remove);
+                } else {
+                    available.innerText = "Booked";
+                    available.style.color = "#ff0000";
+                    availableDiv.append(availableTag, available);
+                }
 
                 vehicleDiv.append(
                     regDiv,
@@ -87,3 +103,53 @@ async function getVehicles() {
 }
 
 getVehicles();
+
+async function removeVehicle(registrationNo) {
+    let url = `http://localhost:2023/go_ride/vehicles/${uuid}?vehicleRegistrationNo=${registrationNo}`;
+
+    try {
+        let res = await fetch(url, {
+            method: "DELETE",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (res.ok) {
+            window.alert(
+                `Vehicle with registartin no: ${registrationNo} removed succesfully!`
+            );
+            window.location.reload();
+        } else {
+            let data = await res.json();
+            let error = JSON.stringify(data);
+            window.alert(JSON.parse(error).message);
+        }
+    } catch (error) {}
+}
+
+async function changerate(registrationNo) {
+    let url = `http://localhost:2023/go_ride/vehicles/${uuid}?vehicleRegistrationNo=${registrationNo}&perKmRate=${perKmRate}`;
+
+    try {
+        let res = await fetch(url, {
+            method: "DELETE",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (res.ok) {
+            window.alert(
+                `Vehicle with registartin no: ${registrationNo} removed succesfully!`
+            );
+            window.location.reload();
+        } else {
+            let data = await res.json();
+            let error = JSON.stringify(data);
+            window.alert(JSON.parse(error).message);
+        }
+    } catch (error) {}
+}

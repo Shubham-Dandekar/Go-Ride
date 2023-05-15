@@ -87,9 +87,14 @@ async function signUp(event) {
             },
         });
 
-        let user = await res.json();
-        localStorage.setItem("user", JSON.stringify(user));
-        window.location.href = "./home.html";
+        if (res.ok) {
+            let user = await res.json();
+            localStorage.setItem("user", JSON.stringify(user));
+            window.location.href = "./home.html";
+        } else {
+            let data = await res.json();
+            window.alert(data.message);
+        }
     } catch (error) {}
 }
 

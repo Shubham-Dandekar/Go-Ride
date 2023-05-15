@@ -6,10 +6,12 @@ import com.go_ride.exception.UserSessionException;
 import com.go_ride.exception.ValidationException;
 import com.go_ride.model.*;
 import com.go_ride.repository.*;
+import jakarta.mail.MessagingException;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -32,7 +34,7 @@ public class AdminServiceImpl implements AdminService{
     @Autowired
     private EmailService emailService;
     @Override
-    public UserSession addNewAdmin(Admin admin) {
+    public UserSession addNewAdmin(Admin admin) throws MessagingException, UnsupportedEncodingException {
         List<String> emails = checkEmailService.getAllRegisteredEmails();
 
         if(emails.contains(admin.getEmail()))
@@ -49,7 +51,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public String deleteExistingAdmin(String uuid) {
+    public String deleteExistingAdmin(String uuid) throws MessagingException {
         UserSession adminSession = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
@@ -123,7 +125,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public String forgotPassword(String email) {
+    public String forgotPassword(String email) throws MessagingException {
         Admin admin = adminRepo.findById(email).orElseThrow(() -> new AdminException("User not found."));
 
         String password = RandomString.make(16);
@@ -139,7 +141,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public String sendVerificationOtpMail(String uuid) {
+    public String sendVerificationOtpMail(String uuid) throws MessagingException {
         UserSession session = userSessionRepo.findById(uuid).orElseThrow(() -> new UserSessionException("User not logged in."));
 
         Admin admin = adminRepo.findById(session.getEmail()).orElseThrow(() -> new AdminException("User not found."));

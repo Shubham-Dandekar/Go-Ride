@@ -5,10 +5,12 @@ import com.go_ride.exception.*;
 import com.go_ride.model.*;
 import com.go_ride.repository.DriverRepository;
 import com.go_ride.repository.UserSessionRepository;
+import jakarta.mail.MessagingException;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -32,7 +34,7 @@ public class DriverServiceImpl implements DriverService{
     private EmailService emailService;
 
     @Override
-    public UserSession addNewDriver(Driver driver) {
+    public UserSession addNewDriver(Driver driver) throws MessagingException, UnsupportedEncodingException {
         List<String> emails = checkEmailService.getAllRegisteredEmails();
 
         if(!emails.isEmpty() && emails.contains(driver.getEmail()))
@@ -50,7 +52,7 @@ public class DriverServiceImpl implements DriverService{
     }
 
     @Override
-    public String deleteExistingDriver(String uuid) {
+    public String deleteExistingDriver(String uuid) throws MessagingException {
         UserSession userSession = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
@@ -126,7 +128,7 @@ public class DriverServiceImpl implements DriverService{
     }
 
     @Override
-    public String forgotPassword(String email) {
+    public String forgotPassword(String email) throws MessagingException {
         Driver driver = driverRepo.findById(email).orElseThrow(() -> new AdminException("User not found."));
 
         String password = RandomString.make(16);
@@ -142,7 +144,7 @@ public class DriverServiceImpl implements DriverService{
     }
 
     @Override
-    public String sendVerificationOtpMail(String uuid) {
+    public String sendVerificationOtpMail(String uuid) throws MessagingException {
         UserSession session = userSessionRepo.findById(uuid)
                 .orElseThrow(() -> new UserSessionException("User not logged in."));
 
