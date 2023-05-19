@@ -36,6 +36,10 @@ A ride cannot be canceled after the boarding time has passed, nor can it be mark
 -   On successful signup, after booking or canceling a ride, for email address verification, you will receive an email from Go Ride.
 -   The authentication and validation of the administrator, the customer, and the driver using the session uuid provided.
 
+### MySQL Database Schema:
+
+![Go Ride Database](https://github.com/Shubham-Dandekar/Go-Ride/assets/107460330/90334b9a-3715-4b54-87c6-0c29f6ec33c5)
+
 ## Languages Used:
 <table width="100%" align="center">
     <tr>
